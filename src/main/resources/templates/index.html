@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>Path To Philosophy</title>
+	  	<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+		    console.log( "ready!" );
+		    var $results = $("#results");
+		    var $count = $("#count");
+		    var $error = $("#error");
+		    
+		    $("form").submit(function(e){
+		    	
+		        e.preventDefault();
+		        
+		        var $form = $(this);
+		        $results.empty();
+		        $count.empty();
+		        $error.empty();
+		        
+		        var display = function(val){
+		        	$results.append('<li class=\"list-group-item\">' + val.urlPath + '</li>');
+		        	if(val.next != null){
+		        		display(val.next);
+		        	}
+		        }
+		        
+		        $.get({
+		        	url:$form.attr("action"),
+		        	data: $form.serialize(),
+		        	type: "GET",
+		        	success: function(resp){
+		        		console.log(resp);
+		        		$count.append("Steps:  " + resp.distance);
+		        		display(resp);
+		        	},
+		        	error: function(resp){
+		        		var errorMsg = resp.responseJSON.message;
+		        		$error.append(errorMsg);
+		        		console.log(errorMsg);
+		        	}
+		        });
+		    });
+		});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<form action="/philosophy" method="get">
+				<div class="form-group">
+					<label>https://en.wikipedia.org/wiki/</label>
+					<input type="text" name="wikiPage" class="form-control"/>
+					
+				</div>
+				<button type="submit" class=".btn .btn-default">Find</button>
+			</form>
+			<div id="error" class="label label-danger"></div>
+			<div id="count"></span></div>
+			<ul id="results" class="list-group">
+			</ul>
+			
+		</div>
+	
+	</body>
+</html>

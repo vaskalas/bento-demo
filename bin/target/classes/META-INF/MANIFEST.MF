@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: PathToPhilosophy
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: bkalantzis
+Implementation-Vendor-Id: job.bento
+Build-Jdk: 1.8.0_92
+Implementation-URL: http://projects.spring.io/spring-boot/path-to-phil
+ osophy/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
