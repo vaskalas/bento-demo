@@ -13,4 +13,4 @@ Before you start, make sure java 8 and maven is installed on your machine.
 1.  With the application running go to [http://localhost:8888/h2-console/](http://localhost:8888/h2-console/)
 2.  Make sure Driver Class is `org.h2.Driver`
 3.  Enter `jdbc:h2:mem:AZ;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE` in the JDBC Url 
-4.  Once your in you can view the saved steps in the STEPS table
+4.  Once you're in, you can view the saved steps in the STEPS table
